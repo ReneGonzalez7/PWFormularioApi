@@ -11,16 +11,36 @@
 <script src="apiconnection.js"></script>
 <script src="catalogo.js"></script>
 <body style="background-color: rgb(215, 215, 215);">
-  <form id="fichaForm" action="ficha.html" method="post">
-    <input type="hidden" id="src" name="src" value="">
-    <input type="hidden" id="title" name="title" value="">
-    <input type="hidden" id="description" name="description" value="">
-    <div id="catalogo" class="p-0 row justify-content-center">
+  <div id="catalogoContainer">
+      <div id="catalogo" class="p-0 row justify-content-center">
+      </div>
+    <div class="row container justify-content-center">
+      <span class="badge badge-pill badge-primary" onclick="cambiarPagina(1)">1</span>
+      <span class="badge badge-pill badge-primary" onclick="cambiarPagina(2)">2</span>
     </div>
-  </form>
-  <div class="row container justify-content-center">
-    <span class="badge badge-pill badge-primary" onclick="cambiarPagina(1)">1</span>
-    <span class="badge badge-pill badge-primary" onclick="cambiarPagina(2)">2</span>
+  </div>
+
+  <div id="fichaContainer" class="d-none">
+    <div class="row ms-1 me-1" >
+      <img id="fichaImage" class="imagen-ficha col-lg-6 col-12 " src=""  alt="">
+      
+      <div class=" col-lg-6 col-12 align-self-center">
+          <h1 id="fichaTitle"></h1> 
+          <h6>SKU:388834209</h6>
+          <p id="fichaDescription" class=" text-justify mt-5 mb-5 "></p>
+          <div class="row justify-content-around">
+             <div class="col-4">
+                 <h2>Precio</h2>
+                 <h1>$9.990</h1>
+             </div>
+             <div class="col-lg-4 col-sm-8  col-6 align-self-center"  >
+                 <button type="button " class="btn btn-primary btn-lg btn-warning  fs-1 col-12"> Pagar </button>
+
+             </div>
+
+          </div>
+          
+         </div>
   </div>
 </body>
 </html>

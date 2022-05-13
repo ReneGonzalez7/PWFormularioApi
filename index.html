@@ -12,6 +12,12 @@
      function validacionFormulario(){
         var validado=true;
         
+        const rut = document.getElementById("rutInput").value
+        if( !Fn.validaRut(rut)){
+            alert('El rut es invalido');
+            return;
+        }
+
          const passwordInput = document.getElementById("passwordInput").value 
          const passwordRepeatInput=document.getElementById("passwordRepeatInput").value 
          if (passwordInput.length < 6 ){
@@ -39,37 +45,38 @@
 
         const captcha=document.getElementById("captcha").innerHTML
         const captchaInput=document.getElementById("captchaInput").value
+        
         if(captcha!==captchaInput){
                 alert('Captcha Incorrecto, por favor, genere nuevamente')
                 return;
             }
 
-
-            var Fn = {
-	// Valida el rut con su cadena completa "XXXXXXXX-X"
-	validaRut : function (rutInput) {
-		if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutInput))
-			return false;
-		var tmp 	= rutInput.split('-');
-		var digv	= tmp[1]; 
-		var rut 	= tmp[0];
-		if ( digv == 'K' ) digv = 'k' ;
-		return (Fn.dv(rut) == digv );
-	},
-	dv : function(T){
-		var M=0,S=1;
-		for(;T;T=Math.floor(T/10))
-			S=(S+T%10*(9-M++%6))%11;
-		return S?S-1:'k';
-	}
-}
+            if(validado) document.getElementById("formulario").submit() 
 
      }
-        
+       
+     var Fn = {
+              // Valida el rut con su cadena completa "XXXXXXXX-X"
+              validaRut : function (rutInput) {
+                if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutInput))
+                  return false;
+                var tmp 	= rutInput.split('-');
+                var digv	= tmp[1]; 
+                var rut 	= tmp[0];
+                if ( digv == 'K' ) digv = 'k' ;
+                return (Fn.dv(rut) == digv );
+              },
+              dv : function(T){
+                var M=0,S=1;
+                for(;T;T=Math.floor(T/10))
+                  S=(S+T%10*(9-M++%6))%11;
+                return S?S-1:'k';
+              }
+            } 
        
      function generateCaptcha(){
             const characters='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            let result1= ' '; 
+            let result1= ''; 
             for ( let i = 0; i < 5; i++ ) {
                 result1 += characters.charAt(Math.floor(Math.random() * characters.length));
             }
@@ -78,7 +85,6 @@
 
             
         }
-        alert( Fn.validaRut('11111111-1') ? 'Valido' : 'inválido');
 
 
     </script>
@@ -90,7 +96,7 @@
 
 
 <body style="background-color: rgb(215, 215, 215);">
-    <div class="my-3 container bg-light rounded"><form>
+    <div class="my-3 container bg-light rounded"><form id="formulario" action="catalogo.html">
         <div class="form-group">
           <label for="nameInput">Nombre</label>
           <input type="text" class="form-control required" id="nameInput">

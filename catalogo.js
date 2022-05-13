@@ -70,11 +70,16 @@ function createProductElement( SRC, TITLE, DESCRIPTION, onClick ) {
 }
 
 function abrirFicha( SRC, TITLE, DESCRIPTION ){
-    document.getElementById("src").value =SRC;
-    document.getElementById("title").value =TITLE;
-    document.getElementById("description").value =DESCRIPTION;
+    document.getElementById("fichaImage").src =SRC;
+    document.getElementById("fichaTitle").innerHTML =TITLE;
+    document.getElementById("fichaDescription").innerHTML =DESCRIPTION;
 
-    document.getElementById("fichaForm").submit();
+    const ficha = document.getElementById("fichaContainer")
+    ficha.classList.remove("d-none");
+
+    const catalogo = document.getElementById("catalogoContainer")
+    catalogo.classList.add("d-none");
+
 }
 
 responseData = ( responseText, PAGINA )=>{
