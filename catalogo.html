@@ -9,8 +9,18 @@
     <title>Catalogo</title>
 </head>
 <script src="apiconnection.js"></script>
+<script src="catalogo.js"></script>
 <body style="background-color: rgb(215, 215, 215);">
-  <div id="catalogo" class="p-0 row justify-content-center">
+  <form id="fichaForm" action="ficha.html" method="post">
+    <input type="hidden" id="src" name="src" value="">
+    <input type="hidden" id="title" name="title" value="">
+    <input type="hidden" id="description" name="description" value="">
+    <div id="catalogo" class="p-0 row justify-content-center">
+    </div>
+  </form>
+  <div class="row container justify-content-center">
+    <span class="badge badge-pill badge-primary" onclick="cambiarPagina(1)">1</span>
+    <span class="badge badge-pill badge-primary" onclick="cambiarPagina(2)">2</span>
   </div>
 </body>
 </html>

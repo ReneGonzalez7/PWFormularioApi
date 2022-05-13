@@ -4,13 +4,15 @@ var URL_BY_ID     = "https://pixabay.com/api/?key="+API_KEY+"&id=";
 
 const HTTP = new XMLHttpRequest();
 
-var responseData = ( responseText )=>{
+var PAGINA = 1;
+
+var responseData = ( responseText, pagina )=>{
     console.log( responseText) ;
 };
 
 HTTP.onreadystatechange = function (){
     if(this.readyState == 4 && this.status == 200){
-        responseData(this.responseText);
+        responseData(this.responseText, PAGINA);
     }
 }
 
@@ -19,7 +21,8 @@ function getImageById( ID ){
     HTTP.send();
 }
 
-function getImageBySearch( SEARCH ){
+function getImageBySearch( SEARCH, pagina ){
+    PAGINA = pagina;
     HTTP.open("GET", URL_BY_SEARCH + encodeURIComponent(SEARCH));
     HTTP.send()
 }
